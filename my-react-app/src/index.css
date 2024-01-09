@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;height: 100%;
+  padding: 0;
+  /*overflow-y: hidden;*/
+}
+html, body,#root {
+  height: 100% !important;
+  margin: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.container{
+  height: 100%;
+}
+.item{
+  height: 50px;
+  width: 100%;
+  border: 1px solid rgb(231, 231, 231);
+}
+.middle{      
+  flex: 1 1 100%;   
+  overflow: hidden;  
+}
+.top, .bottom{
+  flex:0 0 200px;
+  background-color: aliceblue;
+}
+.contentBox{
+  overflow: auto;
+  flex: 0 1 100%;   
+}
+.left{
+  flex: 1 0 10%;
+  background-color: aliceblue;
+  border-right: 1px solid black ;
+}
+/*筆記flex: 1;: 表示 flex-grow: 1; flex-shrink: 1; flex-basis: 0%;*/
+/*筆記flex: 0;: 表示 flex-grow: 0; flex-shrink: 1; flex-basis: auto;*/
+/*簡而言之，flex: 1; 使元素佔據所有可用的空間，而 flex: 0; 使元素保持它的原始大小。*/
