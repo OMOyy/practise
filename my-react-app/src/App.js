@@ -1,48 +1,55 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect  } from 'react';
 import './App.css';
 import ContentBox from './contentBox';
 import Items from './items';
 import './index.css';
 function App() {
   const [isResizing, setResizing] = useState(false);
-  const [width, setWidth] = useState(10);
+  const [width, setWidth] = useState(50);
   const [startX, setStartX] = useState(0);
   const divRef = useRef(null);
-
+  let isStartResize = false;
+  
+  useEffect(() => {
+    // Just run the first time
+    setResizing(true);
+    console.log('render')
+  }, [isStartResize])  
+   
   const startResize = (e) => {
-    console.log('owo');
     e.preventDefault();
-    const handleMouseDown = (e) =>{
-      setResizing(true);
-      setStartX(e.clientX);
-    }  
-    const handleMouseMove = (e) => {
-      if (isResizing && divRef.current) {
-        const newWidth = width + (e.clientX - startX);
-        console.log(newWidth);
-        setWidth(newWidth);
+    const rect = divRef.current.getBoundingClientRect();
+    const rightEdge = rect.left + rect.width;
+    const isMouseNearRightEdge = (e) => {    
+      const mouseX = e.clientX; console.log("oxo");
+      return mouseX > rightEdge - 5 && mouseX < rightEdge + 5; 
+      
+    };
+    if (isMouseNearRightEdge(e)) {
+        isStartResize = true;
+        setStartX(e.clientX);console.log(startX);      
+      };
+      const handleMouseMove = (e) => {
+        if (isResizing) {console.log("owo");
+          const newWidth = width + (e.clientX - startX);
+          setWidth(newWidth);console.log(e.clientX - startX);
+        }          
 
-        // 获取左边界位置
-        const leftBoundary = divRef.current.getBoundingClientRect().left;
-        console.log('Left Boundary:', leftBoundary);
       }
-    };
-
-    const handleMouseUp = () => {
-      setResizing(false);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mousedown', handleMouseDown);
+      const handleMouseUp = () => {
+        //setResizing(false);
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    
   };
   return (
     <div className='container d-flex flex-column h-100' style={{height: '100%'}}>
       <div className='top'></div>
       <div className='middle d-flex'>
-        <div ref={divRef} className='left'style={{ flex: `1 0 ${width}%`,cursor: 'ew-resize'}}
+        <div ref={divRef} className='left'style={{ flex: `1 0 ${width}px`,cursor: 'ew-resize'}}
       onMouseDown={startResize}>
         <Items/>  
         <Items/>  
