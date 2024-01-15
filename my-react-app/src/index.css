@@ -30,7 +30,7 @@ code {
   overflow: hidden;  
 }
 .top, .bottom{
-  flex:0 0 200px;
+  flex:0 0 50px;
   background-color: aliceblue;
 }
 .contentBox{
@@ -39,8 +39,19 @@ code {
 }
 .left{
   flex: 1 0 10%;
+  background-color: white;
+}
+.bar{
   background-color: aliceblue;
-  border-right: 1px solid black ;
+}
+
+.collapsed {
+  width: 200px; 
+  transition: width 0.3s ease; /*?????*/
+}
+.close{
+  width: 0px; 
+  transition: width 0.3s ease; 
 }
 /*筆記flex: 1;: 表示 flex-grow: 1; flex-shrink: 1; flex-basis: 0%;*/
 /*筆記flex: 0;: 表示 flex-grow: 0; flex-shrink: 1; flex-basis: auto;*/
