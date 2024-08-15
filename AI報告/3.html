@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貸款專員工作平台</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        
+        body, html {
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #f5f7fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #1a3a5c;
+            color: white;
+            padding: 20px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            width: 150px;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            margin-bottom: 15px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #2c5282;
+        }
+        .menu i {
+            margin-right: 10px;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #1a3a5c;
+        }
+        .card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 0;
+        }
+        .task-list {
+            margin-top: 30px;
+        }
+        .task-list h2 {
+            color: #1a3a5c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: bold;
+            color: #1a3a5c;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50?text=銀行Logo" alt="銀行Logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#"><i class="fas fa-home"></i> 主頁</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> 貸款申請</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> 客戶管理</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> 業績報告</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> 行事曆</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> 設置</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>歡迎回來，王小明</h1>
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/40x40" alt="用戶頭像">
+                    <span>王小明 | 高級貸款專員</span>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="card">
+                    <h3>本月貸款申請</h3>
+                    <p>28</p>
+                </div>
+                <div class="card">
+                    <h3>待處理申請</h3>
+                    <p>7</p>
+                </div>
+                <div class="card">
+                    <h3>本月業績</h3>
+                    <p>$1,580,000</p>
+                </div>
+                <div class="card">
+                    <h3>客戶滿意度</h3>
+                    <p>4.8 / 5</p>
+                </div>
+            </div>
+            <div class="task-list">
+                <h2>待處理任務</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>申請編號</th>
+                            <th>客戶名稱</th>
+                            <th>貸款類型</th>
+                            <th>申請日期</th>
+                            <th>狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LN-2024-001</td>
+                            <td>陳大文</td>
+                            <td>房屋貸款</td>
+                            <td>2024-08-10</td>
+                            <td>待審核</td>
+                        </tr>
+                        <tr>
+                            <td>LN-2024-002</td>
+                            <td>李小芳</td>
+                            <td>個人信貸</td>
+                            <td>2024-08-12</td>
+                            <td>待補件</td>
+                        </tr>
+                        <tr>
+                            <td>LN-2024-003</td>
+                            <td>張三</td>
+                            <td>車貸</td>
+                            <td>2024-08-13</td>
+                            <td>初審通過</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

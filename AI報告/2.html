@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業內部系統</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        
+        body, html {
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #f0f8ff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .system-button {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .system-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .system-button i {
+            font-size: 40px;
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+        .system-button span {
+            display: block;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/150x40?text=企業Logo" alt="企業Logo">
+                </div>
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/40x40" alt="用戶頭像">
+                    <span>歡迎，張三</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>企業內部系統</h1>
+        <div class="system-grid">
+            <button class="system-button">
+                <i class="fas fa-user-circle"></i>
+                <span>人力資源系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-chart-line"></i>
+                <span>財務系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-project-diagram"></i>
+                <span>專案管理系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-cubes"></i>
+                <span>庫存管理系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-comments"></i>
+                <span>內部通訊系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-calendar-alt"></i>
+                <span>會議室預約系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-file-alt"></i>
+                <span>文件管理系統</span>
+            </button>
+            <button class="system-button">
+                <i class="fas fa-headset"></i>
+                <span>客戶服務系統</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
