@@ -35,10 +35,11 @@ code {
 }
 .contentBox{
   overflow: auto;
-  flex: 0 1 100%;   
+  flex: 1 0 10%;   
 }
 .left{
-  flex: 1 0 10%;
+  flex: 0 0 auto;
+
   background-color: white;
 }
 .bar{
@@ -46,12 +47,12 @@ code {
 }
 
 .collapsed {
-  width: 200px; 
-  transition: width 0.3s ease; /*?????*/
+  flex: 0 0 200px;
+  transition: flex 0.3s ease; 
 }
 .close{
-  width: 0px; 
-  transition: width 0.3s ease; 
+  flex: 0 0 0px;
+  transition: flex 0.3s ease; 
 }
 /*筆記flex: 1;: 表示 flex-grow: 1; flex-shrink: 1; flex-basis: 0%;*/
 /*筆記flex: 0;: 表示 flex-grow: 0; flex-shrink: 1; flex-basis: auto;*/

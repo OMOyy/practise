@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Material Icons Library</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #search {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+        }
+        .icon-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .icon-item:hover {
+            transform: translateY(-5px);
+        }
+        .material-icons {
+            font-size: 36px;
+            color: #1a73e8;
+        }
+        .icon-name {
+            margin-top: 10px;
+            font-size: 12px;
+            word-break: break-all;
+        }
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+        }
+        #toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 30px; opacity: 1;}
+        }
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;} 
+            to {bottom: 0; opacity: 0;}
+        }
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <h1>Google Material Icons Library</h1>
+    <input type="text" id="search" placeholder="搜索圖標...">
+    <div class="icon-grid" id="iconGrid"></div>
+    <div id="toast">已複製到剪貼板</div>
+
+    <script>
+        const icons = [
+            'home', 'search', 'favorite', 'settings', 'account_circle', 'lock', 'email',
+            'phone', 'message', 'notifications', 'shopping_cart', 'calendar_today',
+            'description', 'attach_file', 'cloud_upload', 'cloud_download', 'delete',
+            'edit', 'save', 'print', 'share', 'visibility', 'visibility_off', 'language',
+            'help', 'info', 'warning', 'error', 'add', 'remove', 'check', 'close',
+            'arrow_back', 'arrow_forward', 'refresh', 'menu', 'more_vert', 'star',
+            'favorite_border', 'thumb_up', 'thumb_down', 'person', 'group', 'public',
+            'school', 'work', 'location_on', 'directions', 'local_offer', 'local_mall',
+            'restaurant', 'local_cafe', 'local_bar', 'local_hotel', 'local_hospital',
+            'local_pharmacy', 'local_library', 'local_movies', 'local_atm', 'local_parking',
+            'local_gas_station', 'flight', 'train', 'directions_car', 'directions_bus',
+            'directions_bike', 'directions_walk', 'hotel', 'beach_access', 'ac_unit',
+            'pool', 'wifi', 'spa', 'fitness_center', 'casino', 'free_breakfast', 'golf_course',
+            'business_center', 'meeting_room', 'room_service', 'smoke_free', 'smoke_rooms',
+            'pets', 'all_inclusive', 'kitchen', 'hot_tub', 'fireplace', 'tv', 'laptop',
+            'computer', 'tablet_android', 'phone_android', 'phone_iphone', 'keyboard',
+            'mouse', 'desktop_windows', 'developer_board', 'dock', 'headset', 'speaker',
+            'memory', 'sim_card', 'wifi_tethering', 'network_wifi', 'network_cell',
+            'battery_full', 'battery_charging_full', 'battery_alert', 'bluetooth',
+            'bluetooth_audio', 'bluetooth_connected', 'bluetooth_disabled', 'cast',
+            'cast_connected', 'computer_connected', 'desktop_access_disabled', 'phone_locked',
+            'developer_mode', 'device_hub', 'devices_other', 'dock_connected', 'gamepad',
+            'headset_mic', 'keyboard_voice', 'laptop_chromebook', 'laptop_mac',
+            'laptop_windows', 'memory_card', 'mouse_connected', 'network_check',
+            'router_connected', 'scanner_connected', 'security_network', 'sim_card_alert',
+            'speaker_group', 'tablet_mac', 'toys_connected', 'tv_connected', 'videogame_asset',
+            'watch_connected', 'add_alert', 'error_outline', 'error', 'warning',
+            'notification_important', 'album', 'av_timer', 'closed_caption', 'equalizer',
+            'explicit', 'fast_forward', 'fast_rewind', 'games', 'hearing', 'high_quality',
+            'loop', 'mic', 'mic_none', 'mic_off', 'movie', 'music_video', 'new_releases',
+            'not_interested', 'pause', 'play_arrow', 'playlist_add', 'queue_music',
+            'radio', 'recent_actors', 'repeat', 'repeat_one', 'replay', 'shuffle',
+            'skip_next', 'skip_previous', 'snooze', 'sort_by_alpha', 'stop', 'subtitles',
+            'surround_sound', 'video_library', 'videocam', 'videocam_off', 'volume_down',
+            'volume_mute', 'volume_off', 'volume_up', 'web', 'web_asset', 'business',
+            'call', 'call_end', 'call_made', 'call_merge', 'call_missed', 'call_received',
+            'call_split', 'chat', 'chat_bubble', 'chat_bubble_outline', 'clear_all',
+            'comment', 'contact_mail', 'contact_phone', 'contacts', 'dialer_sip',
+            'dialpad', 'email', 'forum', 'import_export', 'invert_colors_off',
+            'live_help', 'location_off', 'location_on', 'mail_outline', 'message',
+            'no_sim', 'phone', 'phonelink_erase', 'phonelink_lock', 'phonelink_ring',
+            'phonelink_setup', 'portable_wifi_off', 'present_to_all', 'ring_volume',
+            'rss_feed', 'screen_share', 'speaker_phone', 'stay_current_landscape',
+            'stay_current_portrait', 'stay_primary_landscape', 'stay_primary_portrait',
+            'stop_screen_share', 'swap_calls', 'textsms', 'voicemail', 'vpn_key',
+            'add', 'add_box', 'add_circle', 'add_circle_outline', 'archive', 'backspace',
+            'block', 'clear', 'content_copy', 'content_cut', 'content_paste', 'create',
+            'drafts', 'file_copy', 'filter_list', 'flag', 'font_download', 'forward',
+            'gesture', 'how_to_reg', 'how_to_vote', 'inbox', 'link', 'link_off',
+            'low_priority', 'mail', 'markunread', 'move_to_inbox', 'next_week',
+            'outlined_flag', 'redo', 'remove', 'remove_circle', 'remove_circle_outline',
+            'reply', 'reply_all', 'report', 'save', 'select_all', 'send', 'sort',
+            'text_format', 'unarchive', 'undo', 'waves', 'weekend', 'where_to_vote'
+        ];
+
+        const iconGrid = document.getElementById('iconGrid');
+        const searchInput = document.getElementById('search');
+        const toast = document.getElementById('toast');
+
+        function createIconElement(iconName) {
+            const div = document.createElement('div');
+            div.className = 'icon-item';
+            div.innerHTML = `
+                <i class="material-icons">${iconName}</i>
+                <div class="icon-name">${iconName}</div>
+            `;
+            div.onclick = () => {
+                navigator.clipboard.writeText(`<i class="material-icons">${iconName}</i>`);
+                showToast();
+            };
+            return div;
+        }
+
+        function showToast() {
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        function renderIcons(iconsToRender) {
+            iconGrid.innerHTML = '';
+            iconsToRender.forEach(iconName => {
+                iconGrid.appendChild(createIconElement(iconName));
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredIcons = icons.filter(icon => icon.includes(searchTerm));
+            renderIcons(filteredIcons);
+        });
+
+        renderIcons(icons);
+    </script>
+</body>
+</html>
